@@ -481,7 +481,7 @@ internal class GameInstallService
         task.Progress_Percent = 0;
         double totalCount = task.TaskFiles?.Count ?? 1;
         double increase = 1 / totalCount;
-        Lock _lock = new();
+        object _lock = new();
         await Parallel.ForEachAsync(task.TaskFiles ?? [], cancellationToken, async (GameInstallFile item, CancellationToken token) =>
         {
             if (item.IsFinished)

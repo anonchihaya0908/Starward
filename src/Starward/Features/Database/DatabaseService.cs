@@ -20,7 +20,7 @@ internal static class DatabaseService
     private static string _connectionString;
 
 
-    private static Lock _lock = new();
+    private static object _lock = new();
 
 
     static DatabaseService()

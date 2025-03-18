@@ -142,7 +142,7 @@ internal partial class GameInstallHelper
         {
             return false;
         }
-        return string.Equals(md5, Convert.ToHexStringLower(md5Hash.Hash), StringComparison.OrdinalIgnoreCase);
+        return string.Equals(md5, Convert.ToHexString(md5Hash.Hash), StringComparison.OrdinalIgnoreCase);
     }
 
 
@@ -171,7 +171,7 @@ internal partial class GameInstallHelper
         {
             return false;
         }
-        return string.Equals(md5, Convert.ToHexStringLower(md5Hash.Hash), StringComparison.OrdinalIgnoreCase);
+        return string.Equals(md5, Convert.ToHexString(md5Hash.Hash), StringComparison.OrdinalIgnoreCase);
     }
 
 
@@ -212,7 +212,7 @@ internal partial class GameInstallHelper
             Interlocked.Add(ref task._progress_DownloadFinishBytes, -fs.Length);
             return false;
         }
-        if (string.Equals(md5, Convert.ToHexStringLower(md5Hash.Hash), StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(md5, Convert.ToHexString(md5Hash.Hash), StringComparison.OrdinalIgnoreCase))
         {
             return true;
         }
@@ -260,7 +260,7 @@ internal partial class GameInstallHelper
             Interlocked.Add(ref task._progress_ReadFinishBytes, -fs.Length);
             return false;
         }
-        if (string.Equals(md5, Convert.ToHexStringLower(md5Hash.Hash), StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(md5, Convert.ToHexString(md5Hash.Hash), StringComparison.OrdinalIgnoreCase))
         {
             return true;
         }
@@ -695,7 +695,7 @@ internal partial class GameInstallHelper
         {
             throw new FileNotFoundException("Cannot find file hpatchz.exe");
         }
-        Lock _lock = new();
+        object _lock = new();
 
         string hdiffmap = Path.Combine(task.InstallPath, "hdiffmap.json");
         if (File.Exists(hdiffmap))
